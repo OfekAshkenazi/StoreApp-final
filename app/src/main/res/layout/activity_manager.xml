@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ofek.storeapp.ManagerActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:text="Add Product"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/manageLayout"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true">
+        <EditText
+            android:id="@+id/titleET"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="Title" />
+        <Spinner
+            android:id="@+id/typeSpinner"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/titleET"></Spinner>
+
+        <EditText
+            android:id="@+id/priceET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleET"
+            android:hint="Price"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/descET"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Description"
+            android:layout_below="@id/priceET"
+            android:gravity="top"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_below="@id/manageLayout"
+        android:layout_alignRight="@id/manageLayout"/>
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@id/manageLayout"
+        android:layout_alignRight="@id/manageLayout"
+        android:visibility="gone"/>
+
+</RelativeLayout>

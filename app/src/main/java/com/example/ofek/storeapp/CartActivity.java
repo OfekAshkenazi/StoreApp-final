@@ -76,7 +76,7 @@ class CartListAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 DAL dal=new DAL(context);
-                dal.removeProductFromCart(item.getId());
+                dal.removeProductFromCart(item.getId(),item.getCount());
                 items=initialCartItems();
                 notifyDataSetChanged();
             }

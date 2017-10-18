@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.ofek.storeapp.CartItem;
 
@@ -150,10 +151,21 @@ public class DAL {
         return  map.get(pID);
     }
 
-    public int removeProductFromCart(long pID){
-        SQLiteDatabase db=instance.getReadableDatabase();
-        return db.delete(CART_TABLE_NAME,CART_COL1+"= "+pID,null);
+    public int removeProductFromCart(long pID,int currentCount) {
+        SQLiteDatabase db = instance.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        int count=currentCount-1;
+        if (currentCount > 1) {
+            values.put(CART_COL1,pID);
+            values.put(CART_COL3, count);
+            int result=db.update(CART_TABLE_NAME, values, CART_COL1 + " = " + pID, null);
+            Log.v("update status","result: "+result);
+            return result;
+        } else {
+            return db.delete(CART_TABLE_NAME, CART_COL1 + "= " + pID, null);
+        }
     }
+
     private HashMap<Long,Integer> getCartProductsCount(){
         SQLiteDatabase db=instance.getReadableDatabase();
         HashMap<Long,Integer> cart=new HashMap<>();
